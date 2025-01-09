@@ -28,5 +28,5 @@ RUN poetry config virtualenvs.create false \
 COPY . .
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --start-interval=1s --retries=3 CMD [ "curl", "-f", "http://localhost:8000/health" ]
-
-ENTRYPOINT [ "uvicorn", "app.server:app", "--host", "0.0.0.0", "--log-config", "log_config.json" ]
+# DEFAULT = "--host", "0.0.0.0",
+ENTRYPOINT [ "uvicorn", "app.server:app", "--host", "172.17.0.2", "--log-config", "log_config.json" ]
